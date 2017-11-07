@@ -64,10 +64,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BusTicket.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PrivBusTicket.cpp" />
     <ClCompile Include="Ticket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BusTicket.h" />
+    <ClInclude Include="PrivBusTicket.h" />
     <ClInclude Include="Ticket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

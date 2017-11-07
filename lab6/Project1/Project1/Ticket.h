@@ -6,32 +6,25 @@ class Ticket {
 	
 protected:
 	static int count;
-	bool control;
-	bool sold;
-	string location, departure, arrival, timeDeparture, timeArrival, busId, timeBuy;
-	string *stops;
-	bool baggage;
+	bool control, baggage, sold;
+	string location, departure, arrival, timeDeparture, timeArrival, busId, timeBuy, type;
 public:
 	string passenger;
-	//virtual void funct() = 0;
 	unsigned int id;
+
+	virtual void abstract() = 0; // abstract class
 	Ticket();
 	Ticket(const string &);
 	Ticket(const Ticket &);
 	~Ticket();
+
 	static int getCount();
-	void input(std::istream&);
-	void write(std::ostream &);
-	void setName(const string&);
-	friend class TicketOffice;
-	string *getName();
+	void input(istream &);
+	void output(ostream &);
+	void setPassenger(const string &);
+	string getPassenger();
 	unsigned int getId();
 	virtual bool buy();
 	virtual void buy(const string &);
 	virtual void buy(const string &, const string &, const string &);
 };
-std::string currentDate();
-std::string currentTime();
-
-//char *getTime();
-//void buy(Ticket *);

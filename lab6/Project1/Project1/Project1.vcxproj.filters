@@ -17,9 +17,21 @@
     <ClCompile Include="Ticket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BusTicket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrivBusTicket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ticket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BusTicket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivBusTicket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

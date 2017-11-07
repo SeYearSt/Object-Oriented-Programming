@@ -7,7 +7,9 @@
 using namespace std;
 
 
-std::string currentDate(){
+
+std::string currentDate() // function helper
+{
 	time_t now = time(NULL);
 	struct tm tstruct;
 	char buf[40];
@@ -16,7 +18,8 @@ std::string currentDate(){
 	strftime(buf, sizeof(buf), "%d/%m/%Y", &tstruct);
 	return buf;
 }
-std::string currentTime(){
+std::string currentTime() //function helper
+{
 	time_t now = time(NULL);
 	struct tm tstruct;
 	char buf[40];
@@ -26,31 +29,8 @@ std::string currentTime(){
 	return buf;
 }
 
-//char * getTime() {
-//	char * timeStr = new char[18];
-//	char *tempStr = new char[10];
-//	time_t t = time(0);
-//	struct tm * now = localtime(&t);
-//	_itoa(now->tm_year + 1900, tempStr, 10);
-//	strcpy(timeStr, tempStr);
-//	strcpy(timeStr + strlen(timeStr), "-");
-//	_itoa(now->tm_mon + 1, tempStr, 10);
-//	strcpy(timeStr + strlen(timeStr), tempStr);
-//	strcpy(timeStr + strlen(timeStr), "-");
-//	_itoa(now->tm_mday, tempStr, 10);
-//	strcpy(timeStr + strlen(timeStr), tempStr);
-//	strcpy(timeStr + strlen(timeStr), " ");
-//	_itoa(now->tm_hour, tempStr, 10);
-//	strcpy(timeStr + strlen(timeStr), tempStr);
-//	strcpy(timeStr + strlen(timeStr), ":");
-//	_itoa(now->tm_min, tempStr, 10);
-//	if ((now->tm_min) < 10) strcpy(timeStr + strlen(timeStr), "0");
-//	strcpy(timeStr + strlen(timeStr), tempStr);
-//	return timeStr;
-//}
-
-
 int Ticket::count = 0;
+
 Ticket::Ticket() {
 	cout << "Ticket()\n";
 	count++;
@@ -61,15 +41,16 @@ Ticket::Ticket() {
 }
 Ticket::Ticket(const string & name)
 {
+	passenger = name;
+
 	cout << "Ticket(const string & )\n";
 	count++;
 	id = count;
 	control = false;
-	passenger = name;
 	baggage = true;
 	sold = false;
 }
-Ticket::Ticket(const Ticket &A)
+Ticket::Ticket(const Ticket & A)
 {
 	cout << "Ticket(ticket &)\n";
 	this->passenger = A.passenger;
@@ -81,43 +62,41 @@ Ticket::Ticket(const Ticket &A)
 	this->timeDeparture = A.timeDeparture;
 	this->timeArrival = A.timeArrival;
 	this->busId = A.busId;
-	this->stops = A.stops;
 	this->baggage = A.baggage;
 }
 Ticket::~Ticket()
 {
-	
-	//if (stops) deleteStops(stops);
-
+	//empty
 }
-void Ticket::input(std::istream &in) {
+void Ticket::input(istream & in) {
 	if (!sold) {
 		if (passenger.empty()) {
-			in>>passenger;
+			getline(in,passenger);;
 		}
-		else cout << "this ticket already has owner: " << "\'" << passenger << "\'" << endl;
+		else clog << "this ticket already has owner: " << "\'" << passenger << "\'" << endl;
 	}
-	else cout << "This ticket was bought at:" << timeBuy;
+	else clog << "This ticket was bought at:" << timeBuy;
 }
-void Ticket::write(std::ostream &out)
+void Ticket::output(ostream & out)
 {
-	out << "Owner`s of this ticket is :" << (passenger.empty() ?"\n": passenger);
-	out << "Time buy :" << (timeBuy.empty() ? "\n": timeBuy);
+	out << "Owner`s of this ticket is :" << (passenger.empty() ?"\n": passenger+"\n");
+	out << "Time buy :" << (timeBuy.empty() ? "\n" : timeBuy + "\n");
 	out << "Composted :" << (control ? "true\n" : "false\n");
-	out << "Bought out :" << (location.empty() ? "\n": location);
-	out << "Departure from :" << (departure.empty() ? "\n": departure);
-	out << "Arrival to :" << (arrival.empty() ? "\n":arrival);
-	out << "Time departure :" << (departure.empty() ?"\n": departure);
-	out << "Bought at :" << (timeBuy.empty()? "\n":timeBuy);
+	out << "Bought out :" << (location.empty() ? "\n" : location + "\n");
+	out << "Departure from :" << (departure.empty() ? "\n" : departure + "\n");
+	out << "Arrival to :" << (arrival.empty() ? "\n" : arrival + "\n");
+	out << "Time departure :" << (departure.empty() ? "\n" : departure + "\n");
+	out << "Bought at :" << (timeBuy.empty() ? "\n" : timeBuy + "\n");
 	out << "Ticket Id :" << id << endl;
 	out << "Sold :" << (sold ? "true\n" : "false\n");
-}/*
-void Ticket::setName(char *name) {
-	if (!sold)	passenger = name; else cout << "This ticket was bought at :" << timeBuy;
+	out << "Type :" << type+"\n";
 }
-char * Ticket::getName()
+void Ticket::setPassenger(const string & name) {
+	if (!sold)	passenger = name; else clog << "This ticket was bought at :" << timeBuy;
+}
+string Ticket::getPassenger()
 {
-	if (passenger) return passenger; else return "\n";
+	return passenger;
 }
 unsigned int Ticket::getId()
 {
@@ -126,19 +105,16 @@ unsigned int Ticket::getId()
 int Ticket::getCount()
 {
 	return count;
-}*/
-bool Ticket::buy() {
-	//timeBuy = currentDate();
-	//timeBuy +=" "+currentTime()+"\n";
-	return true;
 }
- 
+bool Ticket::buy() {
+	return sold;
+} 
 void Ticket::buy(const string &name) {
 	if (!sold){
 		sold = true;
 		passenger = name;
 		timeBuy = currentDate();
-		timeBuy += " " + currentTime() + "\n";
+		timeBuy += " " + currentTime();
 }
 }
 void Ticket::buy(const string &name, const string & from, const string & to)
@@ -148,24 +124,19 @@ void Ticket::buy(const string &name, const string & from, const string & to)
 		if (!name.empty()) {
 			passenger = name;
 		}
-		else cout << "This string is empty\n";
+		else clog << "This string is empty\n";
 		if (!from.empty()) {
 			departure = from;
 		}
-		else cout << "This string is empty\n";
+		else clog << "This string is empty\n";
 		if (!to.empty()) {
 			arrival = to;
 		}
-		else cout << "TThis string is empty\n";
+		else clog << "TThis string is empty\n";
 
 		timeBuy = currentDate();
-		timeBuy += " " + currentTime() + "\n";
+		timeBuy += " " + currentTime();
 
 	}
-	else cout << "This ticket is sold\n";
-}
-
-void buy(Ticket *p)
-{
-	p->buy();
+	else clog << "This ticket is sold\n";
 }
