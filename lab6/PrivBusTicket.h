@@ -22,7 +22,7 @@ public:
 
 	PrivBusTicket();
 	PrivBusTicket(const string &name);
-	PrivBusTicket(const PrivBusTicket &);
+
 
 	~PrivBusTicket();
 };

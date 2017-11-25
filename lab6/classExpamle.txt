@@ -1,0 +1,13 @@
+Owner`s of this ticket is :oleh
+Composted :false
+Bought out :
+Departure from :
+Arrival to :
+Time departure :
+Time arrival :
+Bought at :
+BusId :
+Ticket Id :1
+Sold :false
+Type :Buss
+Privigeles :Avalible

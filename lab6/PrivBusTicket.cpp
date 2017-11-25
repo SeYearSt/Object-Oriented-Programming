@@ -6,6 +6,7 @@ int PrivBusTicket::countP = 0;
 
 PrivBusTicket::PrivBusTicket():BusTicket()
 {
+	privileges = true;
 	countP++;
 	numP = countP;
 	cout << "PrivBusTicket()\n";
@@ -17,12 +18,7 @@ PrivBusTicket::PrivBusTicket(const string &name) :BusTicket(name)
 	cout << "PrivBusTicket(const string &)\n";
 	privileges = true;
 }
-PrivBusTicket::PrivBusTicket(const PrivBusTicket &A) : BusTicket(A)
-{
-	this->countP = A.countP;
-	this->numP = A.numP;
-	this->privileges = A.privileges;
-}
+
 PrivBusTicket::~PrivBusTicket()
 {
 }

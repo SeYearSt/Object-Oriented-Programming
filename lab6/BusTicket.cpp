@@ -8,7 +8,7 @@ BusTicket::BusTicket():Ticket()
 	type = "Buss";
 }
 
-BusTicket::BusTicket(const string &name):BusTicket(name) 
+BusTicket::BusTicket(const string &name):Ticket(name) 
 {
 	cout << "BussTicket(const string &)\n";
 	type = "Buss";

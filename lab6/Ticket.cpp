@@ -50,20 +50,20 @@ Ticket::Ticket(const string & name)
 	baggage = true;
 	sold = false;
 }
-Ticket::Ticket(const Ticket & A)
-{
-	cout << "Ticket(ticket &)\n";
-	this->passenger = A.passenger;
-	this->control = A.control;
-	this->sold = A.sold;
-	this->location = A.location;
-	this->departure = A.departure;
-	this->arrival = A.arrival;
-	this->timeDeparture = A.timeDeparture;
-	this->timeArrival = A.timeArrival;
-	this->busId = A.busId;
-	this->baggage = A.baggage;
-}
+//Ticket::Ticket(const Ticket & A)
+//{
+//	cout << "Ticket(ticket &)\n";
+//	this->passenger = A.passenger;
+//	this->control = A.control;
+//	this->sold = A.sold;
+//	this->location = A.location;
+//	this->departure = A.departure;
+//	this->arrival = A.arrival;
+//	this->timeDeparture = A.timeDeparture;
+//	this->timeArrival = A.timeArrival;
+//	this->busId = A.busId;
+//	this->baggage = A.baggage;
+//}
 Ticket::~Ticket()
 {
 	//empty

@@ -16,7 +16,7 @@ public:
 	virtual void abstract() = 0; // abstract class
 	Ticket();
 	Ticket(const string &);
-	Ticket(const Ticket &);
+	//Ticket(const Ticket &);
 	~Ticket();
 
 	static int getCount();

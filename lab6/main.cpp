@@ -1,37 +1,54 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <sstream>
 #include "PrivBusTicket.h"
 #include "NumInterface.h"
 using namespace std;
 
-void sortTICKETS(NumInterface * ARR, int left, int right)
+void sortTickets(PrivBusTicket * arr, int left, int right)
 {
+	
 	int i = left, j = right;
-	int p = ARR[(left + right) / 2].getCountP(); // вибір елемента, відносно якого ділитиметься масив;
+	int temp = (left + right) / 2;
+	int p = arr[(left + right) / 2].getNumP(); // вибір елемента, відносно якого ділитиметься масив;
 	while (i <= j) {
-		while (ARR[i].getNumP() < p)
+		while (arr[i].getNumP() > p)
 			i++;
-		while (ARR[j].getNumP() > p)
+		while (arr[j].getNumP() < p)
 			j--;
 		if (i <= j) {
-			NumInterface *tmp = &ARR[i];
-			ARR[i] = ARR[j];
-			ARR[j] = *tmp;
+			PrivBusTicket tempPtrClass;
+			tempPtrClass= arr[i];
+			arr[i] = arr[j];
+			arr[j] = tempPtrClass;
 			i++;
 			j--;
 		}
 	};
 	if (left < j) // сортування лівої і правої частин масиву;
-		sortTICKETS(ARR, left, j);
+		sortTickets(arr, left, j);
 	if (i < right)
-		sortTICKETS(ARR, i, right);
+		sortTickets(arr, i, right);
+}
+
+std::ostream& operator << (std::ostream& out,  PrivBusTicket A) {
+	out << A.toString();
+	return out;
+}
+std::istream& operator >> (istream & in, PrivBusTicket A ) {
+	string temp;
+	getline(in, temp);
+	A.fromString(temp);
+	return in;
 }
 
 
-void main(){
-	PrivBusTicket A[100], B;
-	//NumInterface A;
-		sortTICKETS(A,30,40);
+
+void main() {
+	PrivBusTicket A("oleh"), arrayOfPrivBusTicket[10];
+	sortTickets(arrayOfPrivBusTicket, 0,9);
+	cout << endl<<A;
+	cin >> A;
 	system("pause");
 }
