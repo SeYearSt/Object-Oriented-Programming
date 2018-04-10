@@ -1,0 +1,11 @@
+D:\VO\lab(8-10)\Cinema\Cinema\obj\Debug\Cinema.exe
+D:\VO\lab(8-10)\Cinema\Cinema\obj\Debug\Cinema.pdb
+D:\VO\lab(8-10)\Cinema\Cinema\Cinema.exe
+D:\VO\lab(8-10)\Cinema\Cinema\Cinema.pdb
+D:\VO\lab(8-10)\Cinema\Cinema\obj\Debug\Cinema.csprojResolveAssemblyReference.cache
+E:\Projects\projects_vs\lab(8-10)\Cinema\obj\Debug\Cinema.csprojResolveAssemblyReference.cache
+E:\Projects\projects_vs\lab(8-10)\Cinema\obj\Debug\Cinema.csproj.CoreCompileInputs.cache
+E:\Projects\projects_vs\lab(8-10)\Cinema\obj\Debug\Cinema.exe
+E:\Projects\projects_vs\lab(8-10)\Cinema\obj\Debug\Cinema.pdb
+E:\Projects\projects_vs\lab(8-10)\Cinema\Cinema.exe
+E:\Projects\projects_vs\lab(8-10)\Cinema\Cinema.pdb
